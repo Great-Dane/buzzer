@@ -33,7 +33,7 @@ window.addEventListener('load', function () {
     document.body.setAttribute('data-supported', 'true');
 
     // Initialize dat.GUI
-    initDatGui();
+    // initDatGui();
   } else {
     document.body.setAttribute('data-supported', 'false');
   }
@@ -86,46 +86,46 @@ window.addEventListener('load', function () {
         }, getMsInput());
       },
     };
-    let presetSelect = this.document.getElementById("light-presets");
-    presetSelect.innerHTML = "";
-    for (let option in presets) {
-      let el = document.createElement("option");
-      el.innerText = el.value = option;
-      presetSelect.appendChild(el);
-    }
-    this.window.addEventListener('gc.button.press', function (evt) {
-      let presetEl = document.getElementById("light-presets");
-      let selected = presetEl.options[presetEl.selectedIndex].text;
-      let allowIndiv = selected.length && selected != "none" ? false : true;
-      let indivs = document.querySelectorAll(".light-indiv-control");
-      for (let control of indivs) {
-        control.disabled = !allowIndiv;
-      }
-      if (selected.length) {
-        presets[selected]();
-      }
-      if (!selected || selected == "none") {
-        let stateArr = [];
-        let light_press = document.getElementById("light-press").checked;
-        for (let i = 1; i < 5; i++) {
-          let player = `p${i}`;
-          let id = `${player}-on`;
-          let el = document.getElementById(id);
-          let temp_on = light_press && evt.detail.name.toLowerCase().indexOf(player) == 0;
-          let on = temp_on ? !el.checked : el.checked;
-          stateArr.push(on ? 1 : 0);
-          //if this one should only be on temporarily, turn it off after some milliseconds
-          if (temp_on) {
-            setTimeout(() => {
-              let newState = el.checked ? 1 : 0;
-              stateArr[i - 1] = newState;
-              setLightFromArr(stateArr);
-            }, getMsInput());
-          }
-        }
-        setLightFromArr(stateArr);
-      }
-    }, false);
+    // let presetSelect = this.document.getElementById("light-presets");
+    // presetSelect.innerHTML = "";
+    // for (let option in presets) {
+    //   let el = document.createElement("option");
+    //   el.innerText = el.value = option;
+    //   presetSelect.appendChild(el);
+    // }
+    // this.window.addEventListener('gc.button.press', function (evt) {
+    //   let presetEl = document.getElementById("light-presets");
+    //   let selected = presetEl.options[presetEl.selectedIndex].text;
+    //   let allowIndiv = selected.length && selected != "none" ? false : true;
+    //   let indivs = document.querySelectorAll(".light-indiv-control");
+    //   for (let control of indivs) {
+    //     control.disabled = !allowIndiv;
+    //   }
+    //   if (selected.length) {
+    //     presets[selected]();
+    //   }
+    //   if (!selected || selected == "none") {
+    //     let stateArr = [];
+    //     let light_press = document.getElementById("light-press").checked;
+    //     for (let i = 1; i < 5; i++) {
+    //       let player = `p${i}`;
+    //       let id = `${player}-on`;
+    //       let el = document.getElementById(id);
+    //       let temp_on = light_press && evt.detail.name.toLowerCase().indexOf(player) == 0;
+    //       let on = temp_on ? !el.checked : el.checked;
+    //       stateArr.push(on ? 1 : 0);
+    //       //if this one should only be on temporarily, turn it off after some milliseconds
+    //       if (temp_on) {
+    //         setTimeout(() => {
+    //           let newState = el.checked ? 1 : 0;
+    //           stateArr[i - 1] = newState;
+    //           setLightFromArr(stateArr);
+    //         }, getMsInput());
+    //       }
+    //     }
+    //     setLightFromArr(stateArr);
+    //   }
+    // }, false);
   } else {
     document.body.setAttribute('data-lights-supported', 'false');
   }
@@ -293,9 +293,9 @@ function makeAnalogStickTables(analogSticks, index) {
 
 function showControllerTables(event) {
 
-  if (Controller.controllerCount === 1) {
-    document.getElementById('instructions').className = 'hidden';
-  }
+  // if (Controller.controllerCount === 1) {
+  //   document.getElementById('instructions').className = 'hidden';
+  // }
 
   var controller = event.detail.controller;
 
@@ -496,11 +496,11 @@ function initDatGui() {
     });
   }
 
-  var f1 = gui.addFolder('Analog to D-pad');
-  f1.add(Example, 'useAnalogAsDpad', ['left', 'right', 'both', 'none', false]);
-  f1.add(Example, 'analogStickDpadThreshold', 0, 1);
+  // var f1 = gui.addFolder('Analog to D-pad');
+  // f1.add(Example, 'useAnalogAsDpad', ['left', 'right', 'both', 'none', false]);
+  // f1.add(Example, 'analogStickDpadThreshold', 0, 1);
 
-  gui.add(Example, 'buttonThreshold', 0, 1);
-  gui.add(Example, 'mapAnalogToShape', ['none', 'square']);
+  // gui.add(Example, 'buttonThreshold', 0, 1);
+  // gui.add(Example, 'mapAnalogToShape', ['none', 'square']);
 
 }
