@@ -314,6 +314,36 @@ function showControllerTables(event) {
   }, 100);
 }
 
+// randomly select a buzzer sound from the available options for this player and play it
+function playBuzzerSound(player) {
+  console.info("playBuzzerSound", player);
+  let buzzerSounds = [];
+  switch(player) {
+    case "p1":
+      buzzerSounds = [];
+      break;
+    case "p2":
+      buzzerSounds = [];
+      break;
+    case "p3":
+      buzzerSounds = ['anime-wow.mp3', 'bone-crack.mp3', 'vine-boom.mp3'];
+      break;
+    case "p4":
+      buzzerSounds = [];
+      break;
+    default:
+      buzzerSounds = [];
+  }
+  let audio;
+  if (buzzerSounds.length > 0) {
+    const sound = buzzerSounds[Math.floor(Math.random() * buzzerSounds.length)];
+    audio = new Audio(`assets/sounds/${player}-buzzers/${sound}`);
+  } else {
+    audio = new Audio('assets/sounds/buzz-in.mp3');
+  }
+  audio.play();
+}
+
 function updateButton(event) {
   var detail = event.detail;
 
@@ -325,10 +355,11 @@ function updateButton(event) {
       console.info(playersBuzzedIn, "ignoring buzzer")
       return; //someone has already buzzed in, ignore further buzzes until reset
     }
-    const audio = new Audio('assets/sounds/buzz-in.mp3');
-    audio.play();
+    
+    const playerId = detail.name.toLowerCase().slice(0, 2);    
+    playBuzzerSound(playerId); //play the buzzer sound
+    
     // set visual state of points labels
-    const playerId = detail.name.toLowerCase().slice(0, 2);
     let pointsLbl = document.getElementById(playerId);
     console.info(pointsLbl);
     if (pointsLbl) {
