@@ -316,22 +316,29 @@ function showControllerTables(event) {
 function updateButton(event) {
   var detail = event.detail;
 
-  if (event.type === 'gc.button.press') {
-    console.log('button.press');
+  if (event.type === 'gc.button.press' && detail.name.toLowerCase().includes("red")) {
+    console.log('red button pressed');
     const audio = new Audio('assets/sounds/buzz-in.mp3');
     audio.play();
-    //console.log(detail);
+    console.log(detail);
+    // set visual state of points labels
+    const playerId = detail.name.toLowerCase().slice(0, 2);
+    let pointsLbl = document.getElementById(playerId);
+    console.info(pointsLbl);
+    if (pointsLbl) {
+      pointsLbl.classList[detail.pressed ? "add" : "remove"]("buzzed");
+    }
     //debugger;
   }
 
   if (event.type === 'gc.button.hold') {
-    console.log('button.hold');
+    // console.log('button.hold');
     //console.log(detail);
     //debugger;
   }
 
   if (event.type === 'gc.button.release') {
-    console.log('button.release');
+    // console.log('button.release');
     //console.log(detail);
     //debugger;
   }
