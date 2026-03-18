@@ -258,3 +258,42 @@ footer > * {
     content: "💡";
     padding-left: 0.5em;
 }
+
+body {
+  font-family: monospace, arial;
+  font-size: 38px;
+  text-align: center;
+  background-color: #d9ead3;
+}
+
+#p1 {
+  margin-top: 2rem;
+}
+
+#p1, #p2, #p3, #p4 {
+  margin-bottom: 6rem;
+  background-color: #3a783a;
+  border: 4px solid black;
+  border-radius: 4px;
+  max-width: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  all: unset;
+  font-family: Arial;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+#p1input, #p2input, #p3input, #p4input {
+  font-family: Arial Black;
+  border-radius: 4px;
+  font-size: xxx-large;
+  text-align: center;
+  width: 200px;
+}
