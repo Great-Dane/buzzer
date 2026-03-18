@@ -12,6 +12,7 @@ var buzzHighlights = {
 };
 
 var lightInterval = null;
+var playersBuzzedIn = []; //keep track of which players have buzzed in for the current question, so we can disable buzzing in until reset
 
 function setLightFromArr(arr) {
   let state = parseInt(arr.join(""), 2);
@@ -318,16 +319,27 @@ function updateButton(event) {
 
   if (event.type === 'gc.button.press' && detail.name.toLowerCase().includes("red")) {
     console.log('red button pressed');
+    console.log(detail);
+    playersBuzzedIn.push(detail.name); //add this player to the list of those who have buzzed in
+    if (playersBuzzedIn.length > 1) {
+      console.info(playersBuzzedIn, "ignoring buzzer")
+      return; //someone has already buzzed in, ignore further buzzes until reset
+    }
     const audio = new Audio('assets/sounds/buzz-in.mp3');
     audio.play();
-    console.log(detail);
     // set visual state of points labels
     const playerId = detail.name.toLowerCase().slice(0, 2);
     let pointsLbl = document.getElementById(playerId);
     console.info(pointsLbl);
     if (pointsLbl) {
-      pointsLbl.classList[detail.pressed ? "add" : "remove"]("buzzed");
+      pointsLbl.classList.add("buzzed");
     }
+    setTimeout(() => {
+      playersBuzzedIn = [];
+      if (pointsLbl) {
+        pointsLbl.classList.remove("buzzed");
+      }
+    }, 5000);
     //debugger;
   }
 
@@ -354,13 +366,13 @@ function updateButton(event) {
   for (let colName in buzzHighlights) {
     if (detail.name.endsWith(colName)) {
       color = buzzHighlights[colName];
-      console.log(colName, detail.name, color);
+      // console.log(colName, detail.name, color);
       break;
     }
   }
 
   let styleStr = `rgba(${color}, ${detail.pressed ? 0.6 : 0})`;
-  console.log("styleStr",styleStr);
+  // console.log("styleStr",styleStr);
   detailEl.style.backgroundColor = styleStr;
   document.getElementById(buttnId + '_value').innerHTML = detail.value;
   document.getElementById(buttnId + '_value').style.backgroundColor = styleStr;
