@@ -1,135 +1,135 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        body {
-            font-family: monospace, arial;
-            font-size: 38px;
-            text-align: center;
-            background-color: #d9ead3;
-        }
+  <style>
+    body {
+      font-family: monospace, arial;
+      font-size: 38px;
+      text-align: center;
+      background-color: #d9ead3;
+    }
 
-        #p1 {
-          margin-top: 2rem;
-        }
+    #p1 {
+      margin-top: 2rem;
+    }
 
-        #p1, #p2, #p3, #p4 {
-          margin-bottom: 6rem;
-          background-color: #3a783a;
-          border: 4px solid black;
-          border-radius: 4px;
-          max-width: 400px;
-          padding: 10px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
+    #p1, #p2, #p3, #p4 {
+      margin-bottom: 6rem;
+      background-color: #3a783a;
+      border: 4px solid black;
+      border-radius: 4px;
+      max-width: 400px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .name {
-          all: unset;
-          font-family: Arial;
-          color: white;
-          font-weight: 600;
-          text-align: center;
-        }
+    .name {
+      all: unset;
+      font-family: Arial;
+      color: white;
+      font-weight: 600;
+      text-align: center;
+    }
 
-        #p1input, #p2input, #p3input, #p4input {
-          font-family: Arial Black;
-          border-radius: 4px;
-          font-size: xxx-large;
-          text-align: center;
-          width: 200px;
-        }
-    </style>
+    #p1input, #p2input, #p3input, #p4input {
+      font-family: Arial Black;
+      border-radius: 4px;
+      font-size: xxx-large;
+      text-align: center;
+      width: 200px;
+    }
+  </style>
 </head>
 <body>
-    <!-- <div id="demo"></div> -->
-    <div id="p1">
-      <input class="name" type="text" value="CONTESTANT #1"></input>
-      <input id="p1input" type="text" value="0"></input>
-    </div>
-    <div id="p2">
-      <input class="name" type="text" value="CONTESTANT #2"></input>
-      <input id="p2input" type="text" value="0"></input>
-    </div>
-    <div id="p3">
-      <input class="name" type="text" value="CONTESTANT #3"></input>
-      <input id="p3input" type="text" value="0"></input>
-    </div>
-    <div id="p4">
-      <input class="name" type="text" value="CONTESTANT #4"></input>
-      <input id="p4input" type="text" value="0"></input>
-    </div>
-    
-    <script>
-        window.onload = function() {
-          // var demo = document.getElementById('demo');
+  <!-- <div id="demo"></div> -->
+  <div id="p1">
+    <input class="name" type="text" value="CONTESTANT #1"></input>
+    <input id="p1input" type="text" value="0"></input>
+  </div>
+  <div id="p2">
+    <input class="name" type="text" value="CONTESTANT #2"></input>
+    <input id="p2input" type="text" value="0"></input>
+  </div>
+  <div id="p3">
+    <input class="name" type="text" value="CONTESTANT #3"></input>
+    <input id="p3input" type="text" value="0"></input>
+  </div>
+  <div id="p4">
+    <input class="name" type="text" value="CONTESTANT #4"></input>
+    <input id="p4input" type="text" value="0"></input>
+  </div>
+  
+  <script>
+    window.onload = function() {
+      // var demo = document.getElementById('demo');
 
-          const keyCode1 = 49;
-          const keyCode2 = 50;
-          const keyCode3 = 51;
-          const keyCode4 = 52;
-          const keyCode5 = 53;
-          const keyCode6 = 54;
-          const keyCode7 = 55;
-          const keyCode8 = 56;
-          const keyCode9 = 57;
-          const keyCode0 = 58;
+      const keyCode1 = 49;
+      const keyCode2 = 50;
+      const keyCode3 = 51;
+      const keyCode4 = 52;
+      const keyCode5 = 53;
+      const keyCode6 = 54;
+      const keyCode7 = 55;
+      const keyCode8 = 56;
+      const keyCode9 = 57;
+      const keyCode0 = 58;
 
-          var value = 0;
-          var space_bar = 32;
-          var right_arrow = 39;
+      var value = 0;
+      var space_bar = 32;
+      var right_arrow = 39;
 
-          let p1points = 0;
-          let p2points = 0;
-          let p3points = 0;
-          let p4points = 0;
+      let p1points = 0;
+      let p2points = 0;
+      let p3points = 0;
+      let p4points = 0;
 
-          
-          const p1input = document.getElementById("p1input");
-          const p2input = document.getElementById("p2input");
-          const p3input = document.getElementById("p3input");
-          const p4input = document.getElementById("p4input");
+      
+      const p1input = document.getElementById("p1input");
+      const p2input = document.getElementById("p2input");
+      const p3input = document.getElementById("p3input");
+      const p4input = document.getElementById("p4input");
 
-          window.onkeydown = function(event) {
-            // demo.innerHTML = 'Pressed ' + event.keyCode;
-            
-            if (event.keyCode == keyCode1) {
-              p1points++;
-            }
-            if (event.keyCode == keyCode2) {
-              p2points++;
-            }
-            if (event.keyCode == keyCode3) {
-              p3points++;
-            }
-            if (event.keyCode == keyCode4) {
-              p4points++;
-            }
-            if (event.keyCode == keyCode5) {
-              p1points--;
-            }
-            if (event.keyCode == keyCode6) {
-              p2points--;
-            }
-            if (event.keyCode == keyCode7) {
-              p3points--;
-            }
-            if (event.keyCode == keyCode8) {
-              p4points--;
-            }
-            
-            p1input.value = p1points;
-            p2input.value = p2points;
-            p3input.value = p3points;
-            p4input.value = p4points;
-          }
-          p1input.addEventListener("input", updateValue);
+      window.onkeydown = function(event) {
+      // demo.innerHTML = 'Pressed ' + event.keyCode;
+      
+      if (event.keyCode == keyCode1) {
+        p1points++;
+      }
+      if (event.keyCode == keyCode2) {
+        p2points++;
+      }
+      if (event.keyCode == keyCode3) {
+        p3points++;
+      }
+      if (event.keyCode == keyCode4) {
+        p4points++;
+      }
+      if (event.keyCode == keyCode5) {
+        p1points--;
+      }
+      if (event.keyCode == keyCode6) {
+        p2points--;
+      }
+      if (event.keyCode == keyCode7) {
+        p3points--;
+      }
+      if (event.keyCode == keyCode8) {
+        p4points--;
+      }
+      
+      p1input.value = p1points;
+      p2input.value = p2points;
+      p3input.value = p3points;
+      p4input.value = p4points;
+      }
+      p1input.addEventListener("input", updateValue);
 
-          function updateValue(e) {
-            demo.innerHTML = e.target.value;
-          }
-        };
-    </script>
+      function updateValue(e) {
+      demo.innerHTML = e.target.value;
+      }
+    };
+  </script>
 </body>
 </html>
