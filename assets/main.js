@@ -138,8 +138,8 @@ window.addEventListener('gc.button.release', updateButton, false);
 window.addEventListener('gc.analog.change', updateAnalog, false);
 
 // Controller events
-window.addEventListener('gc.controller.found', showControllerTables, false);
-window.addEventListener('gc.controller.lost', destroyTable, false);
+// window.addEventListener('gc.controller.found', showControllerTables, false);
+// window.addEventListener('gc.controller.lost', destroyTable, false);
 
 
 // Functions
