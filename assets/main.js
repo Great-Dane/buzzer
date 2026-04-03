@@ -320,16 +320,16 @@ function playBuzzerSound(player) {
   let buzzerSounds = [];
   switch(player) {
     case "p1":
-      buzzerSounds = [];
+      buzzerSounds = ['puzzle-solved.mp3'];
       break;
     case "p2":
-      buzzerSounds = [];
+      buzzerSounds = ['big-meaty-men-slapping-meat.mp3', 'hank-hill-yep.mp3', 'melee-go.mp3', 'oh-no.mp3', 'rocket-league-save.mp3'];
       break;
     case "p3":
-      buzzerSounds = ['anime-wow.mp3', 'bone-crack.mp3', 'vine-boom.mp3'];
+      buzzerSounds = ['apparently.mp3'];
       break;
     case "p4":
-      buzzerSounds = [];
+      buzzerSounds = ['win-xp-error.mp3'];
       break;
     default:
       buzzerSounds = [];
@@ -340,6 +340,12 @@ function playBuzzerSound(player) {
     audio = new Audio(`assets/sounds/${player}-buzzers/${sound}`);
   } else {
     audio = new Audio('assets/sounds/buzz-in.mp3');
+  }
+  if (audio.src.includes('puzzle') || audio.src.includes('rocket') || audio.src.includes('xp')) {
+    audio.volume = .3;
+  }
+  if (audio.src.includes('xp')) {
+    audio.volume = .5;
   }
   audio.play();
 }
