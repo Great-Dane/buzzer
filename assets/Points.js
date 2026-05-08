@@ -54,6 +54,12 @@ window.onload = function() {
   if (event.keyCode == keyCode8) {
     p4points--;
   }
+  if (event.keyCode == keyCode9) {
+    p1points = 32;
+    p2points = 32;
+    p3points = 32;
+    p4points = 32;
+  }
   
   p1input.value = p1points;
   p2input.value = p2points;
