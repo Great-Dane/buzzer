@@ -319,18 +319,18 @@ function playBuzzerSound(player) {
   console.info("playBuzzerSound", player);
   let buzzerSounds = [];
   switch(player) {
-    case "p1":
-      buzzerSounds = ['puzzle-solved.mp3'];
-      break;
-    case "p2":
-      buzzerSounds = ['big-meaty-men-slapping-meat.mp3', 'hank-hill-yep.mp3', 'melee-go.mp3', 'oh-no.mp3', 'rocket-league-save.mp3'];
-      break;
-    case "p3":
-      buzzerSounds = ['apparently.mp3'];
-      break;
-    case "p4":
-      buzzerSounds = ['win-xp-error.mp3'];
-      break;
+    // case "p1":
+    //   buzzerSounds = ['puzzle-solved.mp3'];
+    //   break;
+    // case "p2":
+    //   buzzerSounds = ['big-meaty-men-slapping-meat.mp3', 'hank-hill-yep.mp3', 'melee-go.mp3', 'oh-no.mp3', 'rocket-league-save.mp3'];
+    //   break;
+    // case "p3":
+    //   buzzerSounds = ['apparently.mp3'];
+    //   break;
+    // case "p4":
+    //   buzzerSounds = ['win-xp-error.mp3'];
+    //   break;
     default:
       buzzerSounds = [];
   }
