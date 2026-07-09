@@ -26,12 +26,64 @@ window.onload = function() {
   const p1name = document.getElementById("p1name");
   const p2name = document.getElementById("p2name");
   const p3name = document.getElementById("p3name");
-  const p4name = document.getElementById("p4name");
+  // const p4name = document.getElementById("p4name");
 
   const p1input = document.getElementById("p1input");
   const p2input = document.getElementById("p2input");
   const p3input = document.getElementById("p3input");
-  const p4input = document.getElementById("p4input");
+  // const p4input = document.getElementById("p4input");
+
+  const animalImage = document.getElementById("animal-image");
+
+  const animalImages = {
+    bats: [
+      "assets/images/bats-1.jpg",
+      "assets/images/bats-2.webp",
+      "assets/images/bats-3.webp",
+      "assets/images/bats-4.webp",
+      "assets/images/bats-5.jpg"
+    ],
+    beetle: [
+      "assets/images/beetle-1.webp",
+      "assets/images/beetle-2.jpg",
+      "assets/images/beetle-3.webp"
+    ],
+    coyote: [
+      "assets/images/coyote-1.png",
+      "assets/images/coyote-2.webp"
+    ],
+    oriole: [
+      "assets/images/oriole-1.jfif",
+      "assets/images/oriole-2.jfif",
+      "assets/images/oriole-3.jfif"
+    ],
+    parrot: [
+      "assets/images/parrot-1.jpg",
+      "assets/images/parrot-2.jpg",
+      "assets/images/parrot-3.webp",
+      "assets/images/parrot-4.webp"
+    ],
+    raccoon: [
+      "assets/images/raccoon-1.jpg",
+      "assets/images/raccoon-2.jpg",
+      "assets/images/raccoon-3.jpg",
+      "assets/images/raccoon-4.jpg"
+    ],
+    snake: [
+      "assets/images/snake-1.jpg"
+    ]
+  };
+
+  function updateAnimalImage(animal) {
+    if (!animalImage) return;
+
+    const images = animalImages[animal];
+    if (!images || images.length === 0) return;
+
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    animalImage.src = randomImage;
+    animalImage.alt = `${animal} reveal`;
+  }
 
   window.onkeydown = function(event) {
   // demo.innerHTML = 'Pressed ' + event.keyCode;
@@ -42,25 +94,25 @@ window.onload = function() {
       p1name.style.textDecoration = "underline";
       p2name.style.textDecoration = "none";
       p3name.style.textDecoration = "none";
-      p4name.style.textDecoration = "none";
+      // p4name.style.textDecoration = "none";
     }
     if (event.ctrlKey && event.keyCode == keyCode2) {
       activePlayer = 2;
       p2name.style.textDecoration = "underline";
       p1name.style.textDecoration = "none";
       p3name.style.textDecoration = "none";
-      p4name.style.textDecoration = "none";
+      // p4name.style.textDecoration = "none";
     }
     if (event.ctrlKey && event.keyCode == keyCode3) {
       activePlayer = 3;
       p3name.style.textDecoration = "underline";
       p1name.style.textDecoration = "none";
       p2name.style.textDecoration = "none";
-      p4name.style.textDecoration = "none";
+      // p4name.style.textDecoration = "none";
     }
     if (event.ctrlKey && event.keyCode == keyCode4) {
       activePlayer = 4;
-      p4name.style.textDecoration = "underline";
+      // p4name.style.textDecoration = "underline";
       p1name.style.textDecoration = "none";
       p2name.style.textDecoration = "none";
       p3name.style.textDecoration = "none";
@@ -124,27 +176,38 @@ window.onload = function() {
           break;
         case 'g':
           console.log('-3 points!');
+          updateAnimalImage('raccoon');
           updatePoints(-3); // raccoon
           break;
         case 'h':
           console.log('-1 points!');
+          updateAnimalImage('bats');
           updatePoints(-1); // 1 bats
           break;
         case 'i':
           console.log('-2 points!');
+          updateAnimalImage('bats');
           updatePoints(-2); // 2 bats
           break;
         case 'j':
           console.log('-3 points!');
+          updateAnimalImage('bats');
           updatePoints(-3); // 3 bats
           break;
         case 'k':
           console.log('-3 points!');
+          updateAnimalImage('bats');
           updatePoints(-3); // 3 bats
           break;
         case 'l':
-          // bombardier beetle
-          console.log('bombardier beetle!');
+          // bombardier beetle -- show
+          console.log('show bombardier beetle!');
+          updateAnimalImage('beetle');
+          break;
+        case '?':
+          // bombardier beetle -- steal
+          console.log('bombardier beetle steals!');
+          updatePoints(-2); // lose 2 points
           break;
         case 'z':
           console.log('22 points!');
@@ -154,7 +217,11 @@ window.onload = function() {
           console.log('25 points!');
           updatePoints(25); // 25 points
           break;
-        case 'c':
+        case '{':
+          console.log('show parrot!');
+          updateAnimalImage('parrot');
+          break;
+        case 'c': //parrot
           console.log('parrot! lose half your points!');
           if (activePlayer === 1) {
             p1input.value = p1points = Math.ceil(p1points / 2);
@@ -172,14 +239,17 @@ window.onload = function() {
         case 'v':
           // oriole
           console.log('oriole!');
+          updateAnimalImage('oriole');
           break;
         case 'b':
           // snake
           console.log('snake!');
+          updateAnimalImage('snake');
           break;
         case 'm':
           // coyote
           console.log('coyote! lose all your points!');
+          updateAnimalImage('coyote');
           if (activePlayer === 1) {
             p1input.value = p1points = 0;
           }
@@ -193,7 +263,12 @@ window.onload = function() {
             p4input.value = p4points = 0;
           }
           break;
-        
+        case '>':
+          // clear animal image
+          console.log('clear animal image!');
+          animalImage.src = "";
+          animalImage.alt = "";
+          break;
         
         default:
           console.log('No action for this key combination.');
