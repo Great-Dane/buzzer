@@ -187,7 +187,7 @@ window.onload = function() {
           console.log('bats steal 1 point!');
           updatePoints(-1); // 1 bats
           break;
-        case '9':
+        case '*':
           console.log('bats steal 2 points!');
           updatePoints(-2); // 2 bats
           break;
