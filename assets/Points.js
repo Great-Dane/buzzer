@@ -166,6 +166,10 @@ window.onload = function() {
           console.log('12 points!');
           updatePoints(12); // 12 points
           break;
+        case '}':
+          console.log('15 points!');
+          updatePoints(15); // 15 points
+          break;
         case 'd':
           console.log('18 points!');
           updatePoints(18); // 18 points
@@ -180,24 +184,20 @@ window.onload = function() {
           updatePoints(-3); // raccoon
           break;
         case 'h':
-          console.log('-1 points!');
-          updateAnimalImage('bats');
+          console.log('bats steal 1 point!');
           updatePoints(-1); // 1 bats
           break;
         case 'i':
-          console.log('-2 points!');
-          updateAnimalImage('bats');
+          console.log('bats steal 2 points!');
           updatePoints(-2); // 2 bats
           break;
         case 'j':
-          console.log('-3 points!');
-          updateAnimalImage('bats');
+          console.log('bats steal 3 points!');
           updatePoints(-3); // 3 bats
           break;
         case 'k':
-          console.log('-3 points!');
+          console.log('show bats!');
           updateAnimalImage('bats');
-          updatePoints(-3); // 3 bats
           break;
         case 'l':
           // bombardier beetle -- show
@@ -216,6 +216,18 @@ window.onload = function() {
         case 'x':
           console.log('25 points!');
           updatePoints(25); // 25 points
+          break;
+        case '|':
+          console.log('30 points!');
+          updatePoints(30); // 30 points
+          break;
+        case ':':
+          console.log('35 points!');
+          updatePoints(35); // 35 points
+          break;
+        case ')':
+          console.log('43 points!');
+          updatePoints(43); // 43 points
           break;
         case '{':
           console.log('show parrot!');
