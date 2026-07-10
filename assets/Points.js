@@ -225,7 +225,7 @@ window.onload = function() {
           console.log('35 points!');
           updatePoints(35); // 35 points
           break;
-        case '0':
+        case '&':
           console.log('43 points!');
           updatePoints(43); // 43 points
           break;
